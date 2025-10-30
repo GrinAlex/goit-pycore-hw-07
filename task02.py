@@ -7,9 +7,11 @@ class InputPhoneError(Exception):
     """Exception for input phone error"""
     pass
 
+
 class InputBirthdayError(Exception):
     """Exception for input birthday error"""
     pass
+
 
 def input_error(func):
     """Decorator to handle input errors for contact functions."""
@@ -37,14 +39,6 @@ def parse_input(user_input):
     else:
         return False, ''
     return cmd, *args
-
-
-# class NotFoundRecord(Exception):
-#     def __init__(self, name):
-#         self.name = name
-
-#     def __str__(self):
-#         return f"Record: {self.name} not foud"
 
 
 class Field:
@@ -186,7 +180,6 @@ def change_contact(args, book: AddressBook):
     record = book.find(name)
     if record is None:
         raise KeyError
-        # return f"{Fore.RED}Contact {name} not found.{Fore.RESET}"
     else:
         record_phone = record.find_phone(phone_old)
         if record_phone is None:
@@ -213,8 +206,6 @@ def get_all_contacts(book: AddressBook):
     """ Return all contacts"""
     for record in book.data.values():
         print(f"{Fore.GREEN}{record}{Fore.RESET}")
-    # for record in book:
-    #     print(f"{Fore.GREEN}{book.find(record)}{Fore.RESET}")
 
 
 @input_error
